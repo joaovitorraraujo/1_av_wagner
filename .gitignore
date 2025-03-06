@@ -1,0 +1,41 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment
+venv/
+.env
+
+# Django
+*.sqlite3
+/db.sqlite3
+/media/
+/static/
+
+# Logs
+*.log
+logs/
+
+# IDEs e editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Migrations que não devem ser versionadas
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+
+# Configurações sensíveis
+.env
+config/settings_local.py
+
+# Node.js (caso use npm/yarn para assets)
+node_modules/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
