@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from contas.views import myHome
+from contas.views import addTransaction, addCategory, transactions
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', myHome),
+    path('transactions', addTransaction, name='transactions'),
+    path('categories', addCategory, name='categories'),
+    path('', transactions, name='home'),
 ]
