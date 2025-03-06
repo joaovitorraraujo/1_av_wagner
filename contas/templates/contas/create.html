@@ -1,0 +1,70 @@
+{% extends 'header.html' %} {% load static %}
+
+<!-- content -->
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/output.css' %}" />
+
+<div class="flex items-center justify-center min-h-screen p-0">
+  <form class="rounded-3xl bg-gray-500 p-4 w-full max-w-sm mx-auto">
+    <h2 class="font-bold mb-7">Add Transactions</h2>
+    <div class="mb-5">
+      <label
+        for="date"
+        class="block mb-2 text-sm font-medium text-gray-950 dark:text-white"
+        >Date</label
+      >
+      <input
+        type="text"
+        id="large-input"
+        class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white outline-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+    </div>
+    <div class="mb-5">
+      <label
+        for="description"
+        class="block mb-2 text-sm font-medium text-gray-950 dark:text-white"
+        >Description</label
+      >
+      <input
+        type="text"
+        id="base-input"
+        class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 outline-blue-500 dark:focus:border-blue-500"
+      />
+    </div>
+    <div>
+      <label
+        for="category"
+        class="block mb-2 text-sm font-medium text-gray-950 dark:text-white"
+        >Category</label
+      >
+      <input
+        type="text"
+        id="small-input"
+        class="bg-gray-50 border-0 mb-3 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-blue-500"
+      />
+    </div>
+    <div>
+      <label
+        for="observations"
+        class="block mb-2 text-sm font-medium text-gray-950 dark:text-white"
+        >Observations</label
+      >
+      <input
+        type="text"
+        id="small-input"
+        class="bg-gray-50 border-0 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-blue-500"
+      />
+    </div>
+    <div class="flex justify-end">
+      <button
+        type="submit"
+        class="mt-4 font-bold text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        +
+      </button>
+    </div>
+  </form>
+</div>
+
+{% endblock content %}
