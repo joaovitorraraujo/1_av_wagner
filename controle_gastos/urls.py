@@ -16,13 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from contas.views import addTransaction, addCategory, transactions, updateTrasaction, deleteTransaction
+from contas.views import addTransaction, addCategory, transactions, updateCategory, updateTrasaction, deleteTransaction, deleteCategory
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('transactions/new/', addTransaction, name='new_transactions'),
     path('transactions/update/<int:pk>/', updateTrasaction, name='update_transactions'),
+    path('categories/update/<int:pk>/', updateCategory, name='update_categories'),
     path('transactions/delete/<int:pk>/', deleteTransaction, name='delete_transactions'),
+    path('categories/delete/<int:pk>/', deleteCategory, name='delete_categories'),
     path('categories/new/', addCategory, name='new_categories'),
     path('', transactions, name='home'),
 ]

@@ -6,7 +6,13 @@
 <div class="flex items-center justify-center min-h-screen">
   <form
     class="bg-gray-900 w-full p-4 mx-7 rounded-2xl"
-    action="{% url 'new_categories' %}"
+    action="
+    {% if form.instance.pk %}
+      {% url 'update_categories' form.instance.pk %}
+      {% else %}
+      {% url 'new_categories' %}
+    {% endif %}
+      "
     method="POST"
   >
     {% csrf_token %}
@@ -18,6 +24,7 @@
         >Category</label
       >
       <input
+        required
         name="name"
         type="text"
         id="large-input"

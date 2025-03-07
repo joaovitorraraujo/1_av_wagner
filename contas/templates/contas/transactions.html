@@ -2,12 +2,21 @@
 <!-- content -->
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/output.css' %}" />
-<div class="min-h-screen flex items-center justify-center text-white">
+<div
+  class="min-h-screen p-4 gap-4 flex flex-col items-center justify-center text-white"
+>
   <div
     class="flex flex-col items-center gap-3 bg-gray-900 rounded-2xl p-4 w-full mx-7"
   >
-    <h1 class="text-3xl mb-4">Trasactions</h1>
-    {% for i in transactions %}
+    <div class="flex w-full justify-between p-4">
+      <h1 class="font-semibold text-3xl mb-4">Transactions</h1>
+      <a
+        href="{% url 'new_transactions' %}"
+        class="text-4xl fa-solid fa-square-plus"
+      ></a>
+    </div>
+
+    {% if transactions %} {% for i in transactions %}
     <div
       onclick="toggleDetails(this)"
       class="flex group items-center flex-col bg-white/5 hover:bg-white/10 rounded-sm text-2xl p-4 w-full"
@@ -15,7 +24,9 @@
       <div class="flex items-center justify-between w-full">
         <h2>{{i.title}}</h2>
 
-        <div class="flex items-center gap-4 invisible group-hover:visible">
+        <div
+          class="flex items-center gap-4 md:invisible sm:visible group-hover:visible"
+        >
           <a href="{% url 'delete_transactions' i.id %}"
             ><i class="mb-2 text-sm fa-solid fa-trash"></i
           ></a>
@@ -37,7 +48,43 @@
         </div>
       </div>
     </div>
-    {% endfor %}
+    {% endfor %} {% else %}
+    <h2>THERE ARE NO REGISTERED TRANSACTIONS</h2>
+    {% endif %}
+  </div>
+
+  <div
+    class="flex flex-col items-center gap-3 bg-gray-900 rounded-2xl p-4 w-full mx-7"
+  >
+    <div class="flex w-full justify-between p-4">
+      <h1 class="font-semibold text-3xl mb-4">Categories</h1>
+      <a
+        href="{% url 'new_categories' %}"
+        class="text-4xl fa-solid fa-square-plus"
+      ></a>
+    </div>
+    {% if categories %} {% for i in categories %}
+    <div
+      class="flex group items-center flex-col bg-white/5 hover:bg-white/10 rounded-sm text-2xl p-4 w-full"
+    >
+      <div class="flex items-center justify-between w-full">
+        <h2>{{i.name}}</h2>
+
+        <div
+          class="flex items-center gap-4 md:invisible sm:visible group-hover:visible"
+        >
+          <a href="{% url 'delete_categories' i.id %}"
+            ><i class="mb-2 text-sm fa-solid fa-trash"></i
+          ></a>
+          <a class="m-0" href="{% url 'update_categories' i.id %}"
+            ><i class="mb-2 text-sm fa-solid fa-pen-to-square"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <h2>THERE ARE NO REGISTERED CATEGORIES</h2>
+    {% endif %}
   </div>
 </div>
 
@@ -68,4 +115,5 @@
   src="https://kit.fontawesome.com/bd564a5de4.js"
   crossorigin="anonymous"
 ></script>
+
 {% endblock content %}

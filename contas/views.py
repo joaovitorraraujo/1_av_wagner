@@ -25,7 +25,7 @@ def addCategory(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('new_transactions') 
+            return redirect('home') 
     else:
         form = CategoryForm()
 
@@ -34,7 +34,7 @@ def addCategory(request):
 
 
 def transactions(request):
-    data = {'transactions': Transaction.objects.all()}
+    data = {'transactions': Transaction.objects.all(), 'categories': Category.objects.all(),}
     return render(request, 'contas/transactions.html', data)
 
 
@@ -58,3 +58,22 @@ def deleteTransaction(request, pk):
     transaction = get_object_or_404(Transaction, pk=pk)
     transaction.delete()
     return redirect('home')
+
+def deleteCategory(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    category.delete()
+    return redirect('home')
+
+def updateCategory(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    if request.method == "POST":
+        
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('home') 
+    else:
+        form = CategoryForm(instance=category)
+
+    
+    return render(request, 'contas/add_category.html', {'form': form })

@@ -13,7 +13,7 @@ class Category(models.Model):
     
 class Transaction(models.Model):
     title = models.CharField(max_length=200)
-    value = models.DecimalField(max_digits=7, decimal_places=2)
+    value = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     observations = models.TextField(null=True, blank=True)
    
