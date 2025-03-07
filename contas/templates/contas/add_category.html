@@ -5,18 +5,20 @@
 
 <div class="flex items-center justify-center min-h-screen">
   <form
-    class="bg-gray-900 w-full max-w-sm mx-auto p-2 rounded-2xl"
-    action=""
-    method="post"
+    class="bg-gray-900 w-full p-4 mx-7 rounded-2xl"
+    action="{% url 'new_categories' %}"
+    method="POST"
   >
+    {% csrf_token %}
     <h1 class="font-bold mb-7 text-white">Add Category</h1>
     <div class="mb-5">
       <label
-        for="date"
+        for="name"
         class="block mb-2 text-sm font-medium text-gray-950 dark:text-white"
         >Category</label
       >
       <input
+        name="name"
         type="text"
         id="large-input"
         class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white outline-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"

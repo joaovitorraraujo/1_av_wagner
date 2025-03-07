@@ -5,8 +5,6 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
 
     class Meta:
-        
-
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
 
@@ -14,11 +12,10 @@ class Category(models.Model):
         return self.name
     
 class Transaction(models.Model):
-    date = models.DateTimeField()
-    description = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     value = models.DecimalField(max_digits=7, decimal_places=2)
-    observations = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    observations = models.TextField(null=True, blank=True)
    
     class Meta:
 
@@ -26,4 +23,4 @@ class Transaction(models.Model):
         verbose_name_plural = 'Transacaos'
 
     def __str__(self):
-        return self.description
+        return self.title
