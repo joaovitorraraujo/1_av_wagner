@@ -12,11 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdownMenu.classList.add("opacity-0", "scale-95");
       setTimeout(() => {
         dropdownMenu.classList.add("hidden");
-      }, 300); // Espera a transição terminar antes de esconder
+      }, 300);
     }
   });
 
-  // Fecha o dropdown ao clicar fora dele
   document.addEventListener("click", function (event) {
     if (
       !dropdownButton.contains(event.target) &&

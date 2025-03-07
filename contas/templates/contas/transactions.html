@@ -9,20 +9,61 @@
     <h1 class="text-3xl mb-4">Trasactions</h1>
     {% for i in transactions %}
     <div
-      class="flex group items-center justify-between bg-white/5 hover:bg-white/10 rounded-sm text-2xl p-4 w-full"
+      onclick="toggleDetails(this)"
+      class="flex group items-center flex-col bg-white/5 hover:bg-white/10 rounded-sm text-2xl p-4 w-full"
     >
-      <p>{{i.title}}</p>
-      <div class="flex items-center gap-4 invisible group-hover:visible">
-        <i class="text-sm fa-solid fa-trash"></i>
-        <a class="m-0" href="{% url 'update_transactions' i.id %}"
-          ><i class="mb-2 text-sm fa-solid fa-pen-to-square"></i
-        ></a>
-        <i class="mb-2 fa-solid fa-sort-down"></i>
+      <div class="flex items-center justify-between w-full">
+        <h2>{{i.title}}</h2>
+
+        <div class="flex items-center gap-4 invisible group-hover:visible">
+          <a href="{% url 'delete_transactions' i.id %}"
+            ><i class="mb-2 text-sm fa-solid fa-trash"></i
+          ></a>
+          <a class="m-0" href="{% url 'update_transactions' i.id %}"
+            ><i class="mb-2 text-sm fa-solid fa-pen-to-square"></i
+          ></a>
+          <i class="mb-2 fa-solid fa-sort-down"></i>
+        </div>
+      </div>
+
+      <div
+        class="items hidden overflow-hidden max-h-0 transition-all duration-500 ease-in-out mt-7 justify-start border-t w-full border-t-zinc-700"
+      >
+        <div class="flex flex-col mt-7 text-xl text-zinc-300">
+          <p>Title: {{i.title}}</p>
+          <p>Value: {{i.value}}</p>
+          <p>Category: {{i.category}}</p>
+          <p>Observations: {{i.observations}}</p>
+        </div>
       </div>
     </div>
     {% endfor %}
   </div>
 </div>
+
+<script>
+  function toggleDetails(element) {
+    let details = element.querySelector(".items");
+
+    if (details.classList.contains("max-h-0")) {
+      details.classList.remove("hidden");
+      setTimeout(() => {
+        details.classList.remove("max-h-0", "opacity-0");
+        details.classList.add("max-h-96", "opacity-100");
+      }, 10);
+    } else {
+      details.classList.remove("max-h-96", "opacity-100");
+      details.classList.add("max-h-0", "opacity-0");
+
+      setTimeout(() => {
+        if (details.classList.contains("opacity-0")) {
+          details.classList.add("hidden");
+        }
+      }, 500);
+    }
+  }
+</script>
+
 <script
   src="https://kit.fontawesome.com/bd564a5de4.js"
   crossorigin="anonymous"
